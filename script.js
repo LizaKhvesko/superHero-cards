@@ -10,7 +10,6 @@ const createHeroPage = async() => {
        let cards = document.querySelectorAll('.card');
        select.addEventListener('change', () => {
             let film = select.options[select.selectedIndex].textContent;
-            console.log(cards)
             render(film, cards)
     })
 }
@@ -26,7 +25,7 @@ const doOptions = (data) => {
             }
         })
     })
-    select.innerHTML = '<option value="other">Выберите фильм</option>'
+    select.innerHTML = '<option value="other">Choose film</option>'
     movies.forEach((movie, i)=> {
         let  option = `
         <option value="${i}">${movie}</option>
@@ -43,13 +42,13 @@ const createCards = (data) => {
     data.forEach(card => {
         let heroName = card.name ? `<div class="hero-name">${card.name}</div>` : '';
         let cardPhoto = card.photo ? card.photo : '';
-        let cardActors = card.actors ? ` <div>Actor: ${card.actors}</div>` : '';
-        let cardGender = card.gender ? ` <div>Gender: ${card.gender}</div>` : '';
-        let dateBirthBlock = card.birthDay ? `<div> Birth: ${card.birthDay}</div>` : '';
-        let dateDeathBlock = card.deathDay ? `<div> Death: ${card.deathDay}</div>` : '';
-        let species = card.species ? `<div>Species: ${card.species}</div>` : '';
-        let movies = card.movies ? `<div class="movies">Movies: ${card.movies}</div>` : '';
-        let cardStatus = card.status ? ` <div>Statis: ${card.status}</div>` : '';
+        let cardActors = card.actors ? ` <div><b>Actor</b>: ${card.actors}</div>` : '';
+        let cardGender = card.gender ? ` <div><b>Gender</b>: ${card.gender}</div>` : '';
+        let dateBirthBlock = card.birthDay ? `<div> <b>Birth</b>: ${card.birthDay}</div>` : '';
+        let dateDeathBlock = card.deathDay ? `<div> <b>Death</b>: ${card.deathDay}</div>` : '';
+        let species = card.species ? `<div><b>Species</b>: ${card.species}</div>` : '';
+        let movies = card.movies ? `<div class="movies"><b>Movies</b>: ${card.movies}</div>` : '';
+        let cardStatus = card.status ? ` <div><b>Status</b>: ${card.status}</div>` : '';
 
         let hero = `<div class="card">
             ${heroName}
@@ -76,7 +75,7 @@ const render = (film, cards) => {
     cards.forEach(card => {
         card.style.display = 'block';
         let movies = card.querySelector('.movies');
-        if (film === 'Выберите фильм') {
+        if (film === 'Choose film') {
             return
         }else if (!movies) {
             card.style.display = 'none';
