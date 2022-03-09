@@ -3,14 +3,24 @@ const filterFilms = document.querySelector('.filter-films');
 let select = document.querySelector('select');
 
 const createHeroPage = async() => {
-    let response = await fetch('dbHeroes.json');
-    let data = await response.json();
+    const data = await getData();
     doOptions(data)
     createCards(data)
-       let cards = document.querySelectorAll('.card');
-       select.addEventListener('change', () => {
-            let film = select.options[select.selectedIndex].textContent;
-            render(film, cards)
+    chooseFilm()
+       
+}
+
+const getData = async() => {
+    let response = await fetch('dbHeroes.json');
+    let data = await response.json();
+    return data;
+}
+
+const chooseFilm = () => {
+    let cards = document.querySelectorAll('.card');
+    select.addEventListener('change', () => {
+        let film = select.options[select.selectedIndex].textContent;
+        render(film, cards)
     })
 }
 
@@ -32,7 +42,6 @@ const doOptions = (data) => {
         `
         select.innerHTML += option;
     })
-    select = document.querySelector('select')
 }
 
 const createCards = (data) => {
@@ -47,7 +56,7 @@ const createCards = (data) => {
         let dateBirthBlock = card.birthDay ? `<div> <b>Birth</b>: ${card.birthDay}</div>` : '';
         let dateDeathBlock = card.deathDay ? `<div> <b>Death</b>: ${card.deathDay}</div>` : '';
         let species = card.species ? `<div><b>Species</b>: ${card.species}</div>` : '';
-        let movies = card.movies ? `<div class="movies"><b>Movies</b>: ${card.movies}</div>` : '';
+        let movies = card.movies ? `<div class="movies"><b>Movies</b>: ${card.movies.join(', ')}</div>` : '';
         let cardStatus = card.status ? ` <div><b>Status</b>: ${card.status}</div>` : '';
 
         let hero = `<div class="card">
@@ -77,12 +86,9 @@ const render = (film, cards) => {
         let movies = card.querySelector('.movies');
         if (film === 'Choose film') {
             return
-        }else if (!movies) {
+        }else if (!movies || !movies.textContent.includes(film)) {
             card.style.display = 'none';
         }
-        else if (!movies.textContent.includes(film)) {
-            card.style.display = 'none';
-        } 
     })
 }
 
