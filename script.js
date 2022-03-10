@@ -3,14 +3,23 @@ const filterFilms = document.querySelector('.filter-films');
 let select = document.querySelector('select');
 
 const createHeroPage = async() => {
+    const data = await getData();
+    doOptions(data);
+    createCards(data);
+    chooseFilm();
+}
+
+const getData = async() => {
     let response = await fetch('dbHeroes.json');
     let data = await response.json();
-    doOptions(data)
-    createCards(data)
-       let cards = document.querySelectorAll('.card');
-       select.addEventListener('change', () => {
-            let film = select.options[select.selectedIndex].textContent;
-            render(film, cards)
+    return data;
+}
+
+const chooseFilm = () => {
+    let cards = document.querySelectorAll('.card');
+    select.addEventListener('change', () => {
+        let film = select.options[select.selectedIndex].textContent;
+        render(film, cards);
     })
 }
 
@@ -21,18 +30,17 @@ const doOptions = (data) => {
         let roles = item.movies;
         roles.forEach(role => {
             if (!movies.includes(role)) {
-                movies.push(role)
+                movies.push(role);
             }
         })
     })
-    select.innerHTML = '<option value="other">Choose film</option>'
+    select.innerHTML = '<option value="other">Choose film</option>';
     movies.forEach((movie, i)=> {
         let  option = `
         <option value="${i}">${movie}</option>
         `
         select.innerHTML += option;
     })
-    select = document.querySelector('select')
 }
 
 const createCards = (data) => {
@@ -47,7 +55,7 @@ const createCards = (data) => {
         let dateBirthBlock = card.birthDay ? `<div> <b>Birth</b>: ${card.birthDay}</div>` : '';
         let dateDeathBlock = card.deathDay ? `<div> <b>Death</b>: ${card.deathDay}</div>` : '';
         let species = card.species ? `<div><b>Species</b>: ${card.species}</div>` : '';
-        let movies = card.movies ? `<div class="movies"><b>Movies</b>: ${card.movies}</div>` : '';
+        let movies = card.movies ? `<div class="movies"><b>Movies</b>: ${card.movies.join(', ')}</div>` : '';
         let cardStatus = card.status ? ` <div><b>Status</b>: ${card.status}</div>` : '';
 
         let hero = `<div class="card">
@@ -70,7 +78,6 @@ const createCards = (data) => {
     container.append(heroCards);
 }
 
-
 const render = (film, cards) => {
     cards.forEach(card => {
         card.style.display = 'block';
@@ -79,10 +86,13 @@ const render = (film, cards) => {
             return
         }else if (!movies) {
             card.style.display = 'none';
+        } else {
+            let moviesLength = 'Movies: '.length;
+            let movies = card.querySelector('.movies').textContent.slice(moviesLength).split(', ');
+            if(movies.every(item => item !== film)) {
+                card.style.display = 'none';
+            }
         }
-        else if (!movies.textContent.includes(film)) {
-            card.style.display = 'none';
-        } 
     })
 }
 
