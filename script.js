@@ -4,10 +4,9 @@ let select = document.querySelector('select');
 
 const createHeroPage = async() => {
     const data = await getData();
-    doOptions(data)
-    createCards(data)
-    chooseFilm()
-       
+    doOptions(data);
+    createCards(data);
+    chooseFilm();
 }
 
 const getData = async() => {
@@ -20,7 +19,7 @@ const chooseFilm = () => {
     let cards = document.querySelectorAll('.card');
     select.addEventListener('change', () => {
         let film = select.options[select.selectedIndex].textContent;
-        render(film, cards)
+        render(film, cards);
     })
 }
 
@@ -31,11 +30,11 @@ const doOptions = (data) => {
         let roles = item.movies;
         roles.forEach(role => {
             if (!movies.includes(role)) {
-                movies.push(role)
+                movies.push(role);
             }
         })
     })
-    select.innerHTML = '<option value="other">Choose film</option>'
+    select.innerHTML = '<option value="other">Choose film</option>';
     movies.forEach((movie, i)=> {
         let  option = `
         <option value="${i}">${movie}</option>
@@ -79,15 +78,20 @@ const createCards = (data) => {
     container.append(heroCards);
 }
 
-
 const render = (film, cards) => {
     cards.forEach(card => {
         card.style.display = 'block';
         let movies = card.querySelector('.movies');
         if (film === 'Choose film') {
             return
-        }else if (!movies || !movies.textContent.includes(film)) {
+        }else if (!movies) {
             card.style.display = 'none';
+        } else {
+            let moviesLength = 'Movies: '.length;
+            let movies = card.querySelector('.movies').textContent.slice(moviesLength).split(', ');
+            if(movies.every(item => item !== film)) {
+                card.style.display = 'none';
+            }
         }
     })
 }
