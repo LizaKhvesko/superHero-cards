@@ -57,6 +57,8 @@ const createCards = (data) => {
         let species = card.species ? `<div><b>Species</b>: ${card.species}</div>` : '';
         let movies = card.movies ? `<div class="movies"><b>Movies</b>: ${card.movies.join(', ')}</div>` : '';
         let cardStatus = card.status ? ` <div><b>Status</b>: ${card.status}</div>` : '';
+        let cardCitizenship = card.citizenship ? ` <div><b>Citizenship</b>: ${card.citizenship}</div>` : '';
+        let cardRealName = card.realName ? ` <div><b>Real name</b>: ${card.realName}</div>` : '';
 
         let hero = `<div class="card">
             ${heroName}
@@ -64,10 +66,12 @@ const createCards = (data) => {
             <img class="hero-img" src="${cardPhoto}" alt="hero-photo">
             </div>
             <div class="info">
+            ${cardRealName}
             ${cardActors}
             ${cardGender}
             ${dateBirthBlock}
             ${dateDeathBlock}
+            ${cardCitizenship}
             ${species}
             ${movies}
             ${cardStatus}
