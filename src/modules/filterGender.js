@@ -1,6 +1,8 @@
 import { getData } from "./getData";
 import { createCards } from "./createCards";
 import { chooseFilm } from "./chooseFilm";
+import { createList } from "./createList";
+
 
 export const filterGender = () => {
     const maleBtn = document.querySelector('.male-btn');
@@ -23,7 +25,12 @@ export const filterGender = () => {
     function filter (url) {
        container.innerHTML = '';
        getData(url)
-        .then(data => createCards(data))
+        .then(data => {
+           if(container.classList.contains('noActive-container')) {
+               createList(data);
+            } else {
+              createCards(data)
+        }})
         .then(() => chooseFilm())
     }
 }

@@ -1,5 +1,6 @@
 export const createCards = (data) => {
-    const container = document.querySelector('.container')
+    const container = document.querySelector('.container');
+    container.innerHTML = ''
     const heroCards = document.createElement('div');
     heroCards.classList.add('hero-cards');
     heroCards.innerHTML = '';
@@ -36,4 +37,18 @@ export const createCards = (data) => {
        heroCards.innerHTML += hero; 
     })
     container.append(heroCards);
+
+    let images = document.querySelectorAll('.hero-img');
+    images.forEach(img => {
+        img.addEventListener('mouseover', () => {
+            img.style.transform = 'scale(1.1)';
+            img.style.transition = '1s';
+        })
+    })
+    images.forEach(img => {
+        img.addEventListener('mouseout', () => {
+            img.style.transform = '';
+            img.style.transition = '1s';
+        })
+    })
 }

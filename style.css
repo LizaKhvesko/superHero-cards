@@ -9,7 +9,6 @@ body {
 
 header {
     background-color: red;
-
 }
 
 .marvel {
@@ -18,13 +17,15 @@ header {
     margin-left: auto;
     margin-right: auto;
 }
-
+.noActive-container{
+    display: none;
+}
 .hero-cards {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
     row-gap: 40px;
-    column-gap: 40px;
+    column-gap: 45px;
     padding-left: 40px;
     padding-right: 40px;
     padding-bottom: 50px;
@@ -61,7 +62,7 @@ header {
 
 .filter-films {
     padding: 20px;
-    margin-top: 40px;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
@@ -75,14 +76,54 @@ header {
 }
 .gender{
     text-align: center;
-    margin-bottom: 30px;
+    margin-top: -45px;
 }
 .male-btn,
 .female-btn,
-.all-gender{
+.all-gender,
+.list-btn{
     width: 150px;
     padding: 10px;
     background-color:#47300e;
     color: white;
     font-size: 20px;
+}
+.search{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.input-search{
+    width: 440px;
+    height: 20px;
+    border: 4px solid #47300e;
+    padding: 5px;
+    font-size: 20px;
+}
+.list{
+    display: none;
+    border: 4px solid #47300e;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+}
+.active-list{
+   display: block;
+}
+.hero-cards_list{
+    list-style: none;
+    font-size: 20px;
+    line-height: 30px;
+}
+.list-btn{
+    margin-left: 70px;
+    margin-top: 20px;
+}
+.card-list,
+.close,
+button {
+    cursor: pointer;
+}
+.close{
+    text-align: right;
 }
