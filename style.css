@@ -7,32 +7,35 @@ body {
     background-image: url('./img/fon.jpeg');
 }
 
-header{
+header {
     background-color: red;
-
 }
 
-.marvel{
+.marvel {
     display: block;
     height: 300px;
     margin-left: auto;
     margin-right: auto;
 }
-
-.hero-cards{
+.noActive-container{
+    display: none;
+}
+.hero-cards {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
     row-gap: 40px;
-    column-gap: 50px;
+    column-gap: 45px;
     padding-left: 40px;
     padding-right: 40px;
     padding-bottom: 50px;
 }
-.card{
+
+.card {
     width: 320px;
 }
-.hero-name{
+
+.hero-name {
     display: block;
     text-align: center;
     font-size: 40px;
@@ -40,25 +43,29 @@ header{
     font-family: "Forum";
     color: #47300e;
     font-weight: bold;
-    
+
 }
-.hero-img{
+
+.hero-img {
     display: block;
     height: 400px;
     margin-left: auto;
     margin-right: auto;
 }
-.info{
+
+.info {
     padding-top: 30px;
     padding-left: 20px;
     font-size: 20px;
     line-height: 25px;
 }
-.filter-films{
+
+.filter-films {
     padding: 20px;
-    margin-top: 40px;
-    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
+
 .select-film {
     display: block;
     margin-left: auto;
@@ -66,4 +73,57 @@ header{
     font-size: 25px;
     padding: 5px;
     border: 4px solid #47300e;
+}
+.gender{
+    text-align: center;
+    margin-top: -45px;
+}
+.male-btn,
+.female-btn,
+.all-gender,
+.list-btn{
+    width: 150px;
+    padding: 10px;
+    background-color:#47300e;
+    color: white;
+    font-size: 20px;
+}
+.search{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.input-search{
+    width: 440px;
+    height: 20px;
+    border: 4px solid #47300e;
+    padding: 5px;
+    font-size: 20px;
+}
+.list{
+    display: none;
+    border: 4px solid #47300e;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+}
+.active-list{
+   display: block;
+}
+.hero-cards_list{
+    list-style: none;
+    font-size: 20px;
+    line-height: 30px;
+}
+.list-btn{
+    margin-left: 70px;
+    margin-top: 20px;
+}
+.card-list,
+.close,
+button {
+    cursor: pointer;
+}
+.close{
+    text-align: right;
 }
