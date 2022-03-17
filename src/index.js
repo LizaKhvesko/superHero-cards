@@ -7,6 +7,7 @@ import { chooseFilm } from "./modules/chooseFilm";
 import { search } from "./modules/search";
 import { changeLists } from "./modules/changeLists";
 import { heroCardList } from "./modules/heroCardList";
+import { validation } from "./modules/validation";
 
 getData('http://localhost:3000/heroes')
     .then(data => createCards(data))
@@ -21,5 +22,6 @@ filterGender();
 search();
 changeLists();
 heroCardList();
+validation();
 
 

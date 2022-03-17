@@ -52,6 +52,5 @@ export const heroCardList = () => {
         </div>`
 
         list.append(hero)
-    }
-    
+    }  
 }

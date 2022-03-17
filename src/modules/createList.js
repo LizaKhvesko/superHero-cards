@@ -6,9 +6,7 @@ export const createList = (data) => {
     heroCards.classList.add('hero-cards_list');
     heroCards.innerHTML = '';
     data.forEach((card, i) => {
-        let hero = `<li class="card-list">
-           ${card.name}
-        </li>`
+        let hero = `<li class="card-list">${card.name}</li>`
        heroCards.innerHTML += hero; 
     })
     list.append(heroCards);
