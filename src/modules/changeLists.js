@@ -23,7 +23,6 @@ export const changeLists = () => {
         } else {
             listBtn.textContent = 'List';
             select.style.display = 'block';
-            select.options[0].selected = true;
             gender.style.display = 'block';
         }
     })
