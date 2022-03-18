@@ -11,7 +11,7 @@ export const chooseFilm = () => {
     cards.forEach(card => {
         card.style.display = 'block';
         let movies = card.querySelector('.movies');
-        if (film === 'Choose film') {
+        if (film === 'All Films') {
             return
         }else if (!movies) {
             card.style.display = 'none';
