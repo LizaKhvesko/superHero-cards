@@ -13,6 +13,7 @@ export const changeLists = () => {
         container.classList.toggle('noActive-container');
         list.classList.toggle('active-list');
         inputSearch.value = '';
+        
         if(container.classList.contains('noActive-container')) {
             listBtn.textContent = 'Detailed List';
             select.style.display = 'none';
@@ -22,6 +23,7 @@ export const changeLists = () => {
         } else {
             listBtn.textContent = 'List';
             select.style.display = 'block';
+            select.options[0].selected = true;
             gender.style.display = 'block';
         }
     })

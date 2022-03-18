@@ -10,7 +10,7 @@ export const doOptions = (data) => {
             }
         })
     })
-    select.innerHTML = '<option value="other" selected>Choose film</option>';
+    select.innerHTML = '<option value="other" selected>All Films</option>';
     movies.forEach((movie, i)=> {
         let  option = `
         <option value="${i}">${movie}</option>
