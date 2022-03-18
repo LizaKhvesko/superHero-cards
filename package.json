@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --mode=production",
     "watch": "webpack --watch --mode=development",
-    "server": "json-server —watch dbHeroes.json"
+    "server": "json-server --watch dbHeroes.json"
   },
   "keywords": [],
   "author": "",
